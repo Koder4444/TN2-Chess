@@ -21,7 +21,13 @@ function insertImage() {
     })
   }
   insertImage()
-  
+  //En Passant
+  function EnPassant(){
+    document.querySelectorAll('.box').forEach(image => {
+        image.innerHTML = `${image.innerText} <img class='EnPass' src="${image.innerText}.png" alt="">`
+        image.style.cursor = 'pointer'
+    })
+  }
   
   //Coloring
   
@@ -626,18 +632,16 @@ function insertImage() {
                         if (pinkText == `Wpawn` && aup == 400 && EpW == 1) {
                             document.getElementById(pinkId).innerText = ''
                             item2.innerText = pinkText
-                            document.getElementById(`b${a - 100}`).innerText = 'Wpawn'
-                            coloring()
-                            insertImage()
-                            
+                            insertImage()      
+                            document.getElementById(`b${a - 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
+                            coloring()                                    
                         }
                         else if (pinkText == `Bpawn` && aup == 500 && EpB == 1) {
                             document.getElementById(pinkId).innerText = ''
                             item2.innerText = pinkText
-                            document.getElementById(`b${a + 100}`).innerText = 'Bpawn'
-                            coloring()
                             insertImage()
-                            
+                            document.getElementById(`b${a + 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`
+                            coloring()
                         }
   
                         else if (pinkText == `Wpawn` && aup == 800) {
