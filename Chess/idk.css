@@ -53,6 +53,19 @@ li {
     transform: scale(.7);
 }
 
+#slap{
+    z-index: 5;
+    transform: translateY(-850px);
+}
+
+#dame{
+    z-index: 6;
+    scale: 1.5;
+    transform: translateY(-850px);
+    transform: translateX(-275px);
+    display: none;
+}
+
 .authcont {
     width: 100vw;
 }
