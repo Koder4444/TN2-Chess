@@ -138,6 +138,9 @@ document.querySelectorAll('.box').forEach(item => {
                   let beat = new Audio('bonk_7zPAD7C.mp3');
                   beat.play()
                   tog = tog + 1
+                  let slap = document.getElementById("slap")
+                  slap.src = "slap.mp4"
+                  setTimeout(function(){slap.src = ""}, 800)
 
               }
           })
@@ -152,7 +155,7 @@ document.querySelectorAll('.box').forEach(item => {
       arr.push('0')
       aup = eval(arr.join(''))
       a = aside + aup
-
+      console.log(aup, " ", aside)
 
 
       // Function to display the available paths for all pieces
@@ -561,6 +564,13 @@ document.querySelectorAll('.box').forEach(item => {
       })
 
       if (numOfKings == 1) {
+          let beat = new Audio('bomman-tao-la-bo-chung-m.mp3');
+          beat.play()
+          let slap = document.getElementById("dame")
+          slap.style.display = "block"
+          slap.src = "dame.mp4"
+          slap.playbackRate = 1.65
+          setTimeout(function(){slap.src = ""}, 800)
           setTimeout(() => {
               // console.log(`${toggle}`) 
               if (tog % 2 == 0) {
@@ -579,8 +589,6 @@ document.querySelectorAll('.box').forEach(item => {
   })
 
 })
-
-
 
 
 // Moving the element
@@ -626,16 +634,13 @@ document.querySelectorAll('.box').forEach(item => {
                       }
                       else {
 
-
-
                           document.getElementById(pinkId).innerText = ''
                           item2.innerText = pinkText
                           coloring()
                           insertImage()
                       }
                       let beat = new Audio('bonk_7zPAD7C.mp3');
-                      beat.play()
-                      image.innerHTML = "Untitled_design-removebg-preview.png"
+                      beat.play()                     
 
                   }
 
@@ -651,7 +656,7 @@ document.querySelectorAll('.box').forEach(item => {
                           coloring()
                           insertImage()
                           let beat = new Audio('bonk_7zPAD7C.mp3');
-                  beat.play()
+                          beat.play()
                           
                       }
                       else if(item2.id=='b107'){
@@ -664,7 +669,7 @@ document.querySelectorAll('.box').forEach(item => {
                           coloring()
                           insertImage()
                           let beat = new Audio('bonk_7zPAD7C.mp3');
-                  beat.play()
+                          beat.play()
 
                       }
                       else if(item2.id=='b803'){
@@ -678,7 +683,7 @@ document.querySelectorAll('.box').forEach(item => {
                           coloring()
                           insertImage()
                           let beat = new Audio('bonk_7zPAD7C.mp3');
-                  beat.play()
+                          beat.play()
                           
                       }
                       else if(item2.id=='b807'){
@@ -691,7 +696,7 @@ document.querySelectorAll('.box').forEach(item => {
                           coloring()
                           insertImage()
                           let beat = new Audio('bonk_7zPAD7C.mp3');
-                  beat.play()
+                          beat.play()
 
                       }
                   }
