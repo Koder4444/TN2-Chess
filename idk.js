@@ -11,7 +11,7 @@ function insertImage() {
                 image.style.cursor = 'pointer'
   
             }
-  
+            
             else {
   
                 image.innerHTML = `${image.innerText} <img class='allimg' src="${image.innerText}.png" alt="">`
@@ -106,13 +106,6 @@ function insertImage() {
   
   
   
-  
-  
-  
-  
-  
-  
-  
   tog = 1
   whiteCastleChance=true
   blackCastleChance=true
@@ -174,7 +167,6 @@ function insertImage() {
         arr.push('0')
         aup = eval(arr.join(''))
         a = aside + aup
-        console.log(a)
   
   
         // Function to display the available paths for all pieces
@@ -193,7 +185,7 @@ function insertImage() {
                         if (aup == 200 && document.getElementById(`b${a + 200}`).innerText.length == 0) {
                             document.getElementById(`b${a + 200}`).style.backgroundColor = 'green'
                         }
-                        if (aup == 200 && document.getElementById(`b${a + 200 + 1}`).innerText == `Bpawn` || aup == 200 && document.getElementById(`b${a + 200 -1}`).innerText ==`Bpawn`){
+                        if (aup == 200 && (document.getElementById(`b${a + 200 + 1}`).innerText == `Bpawn` || document.getElementById(`b${a + 200 -1}`).innerText ==`Bpawn`)){
                            EpW = 1
                         }
                     }
@@ -216,7 +208,7 @@ function insertImage() {
                     //     insertImage()
                     // }
                     // if (aside < 8 && document.getElementById(`b${a + 100 + 1}`).innerText.length == 0 && document.getElementById(`b${a + 100}`).innerText.length == 0) {
-                    //     document.getElementById(`b${a + 100}`).style.backgroundColor = 'green'
+                    //     document.getElementById(`b${a + 100}`).style.backgroundColor = 'green' 
                     // }
   
                     // if (aside > 1 && document.getElementById(`b${a + 100 - 1}`).innerText.length == 0 && document.getElementById(`b${a + 100}`).innerText.length == 0) {
@@ -232,7 +224,7 @@ function insertImage() {
                         if (aup == 700 && document.getElementById(`b${a - 200}`).innerText.length == 0) {
                             document.getElementById(`b${a - 200}`).style.backgroundColor = 'green'
                         }
-                        if (aup == 700 && document.getElementById(`b${a - 200 + 1}`).innerText == `Wpawn` || aup == 700 && document.getElementById(`b${a - 200 -1}`).innerText ==`Wpawn`){
+                        if (aup == 700 && (document.getElementById(`b${a - 200 + 1}`).innerText == `Wpawn` || document.getElementById(`b${a - 200 -1}`)).innerText ==`Wpawn`){
                             EpB = 1
                          }
                     }
@@ -591,22 +583,22 @@ function insertImage() {
         if (numOfKings == 1) {
             let beat = new Audio('bomman-tao-la-bo-chung-m.mp3');
             beat.play()
-            let slap = document.getElementById("dame")
-            slap.style.display = "block"
-            slap.src = "dame.mp4"
-            slap.playbackRate = 1.65
-            setTimeout(function(){slap.src = ""}, 800)
-            setTimeout(() => {
-                // console.log(`${toggle}`) 
-                if (tog % 2 == 0) {
-                    alert('White Wins !!')
-                    location.reload()
-                }
-                else if (tog % 2 !== 0) {
-                    alert('Black Wins !!')
-                    location.reload()
-                }
-            }, 100)
+            let dame = document.getElementById("dame")
+            dame.style.display = "block"
+            dame.src = "dame.mp4"
+            dame.playbackRate = 1.65
+            setTimeout(() => {slap.src = ""}, 1600)
+            // setTimeout(() => {
+            //     // console.log(`${toggle}`) 
+            //     if (tog % 2 == 0) {
+            //         alert('White Wins !!')
+            //         location.reload()
+            //     }0
+            //     else if (tog % 2 !== 0) {
+            //         alert('Black Wins !!')
+            //         location.reload()
+            //     }
+            // }, 100)
         }
   
   
@@ -638,6 +630,7 @@ function insertImage() {
                     arr.push('0')
                     aup = eval(arr.join(''))
                     a = aside + aup
+                    console.log(pinkText, " ", a, " ", aside, " ", aup)
   
                     if (item2.style.backgroundColor == 'green' && item2.innerText.length == 0) {
                         if (pinkText == `Wpawn` && aup == 400 && EpW == 1) {
@@ -766,4 +759,4 @@ function insertImage() {
         }
     })
   })
-  
+  //Timer
