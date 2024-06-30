@@ -129,22 +129,36 @@ function insertImage() {
   
             document.querySelectorAll('.box').forEach(i => {
                 if (i.style.backgroundColor == 'pink') {
+                    tempId = item.id
+                    arr = Array.from(tempId)
+                    arr.shift()
+                    aside = eval(arr.pop())
+                    arr.push('0')
+                    aup = eval(arr.join(''))
+                    a = aside + aup
                     pinkId = i.id
                     pinkText = i.innerText
-  
                     document.getElementById(pinkId).innerText = ''
                     if(EpW == 1 && item.innerText == 'temp'){
                         EpW = 0
-                        tempId = item.id
-                        arr = Array.from(tempId)
-                        arr.shift()
-                        aside = eval(arr.pop())
-                        arr.push('0')
-                        aup = eval(arr.join(''))
-                        a = aside + aup
                         document.getElementById(`b${a + 100}`).innerText = ''
                     }
                     item.innerText = pinkText
+                    if (pinkText == 'Wpawn' && aup == 800) {
+                        document.getElementById(`b${a}`).innerText = 'Wqueen'
+                        document.getElementById(pinkId).innerText = ''  
+                        coloring()
+                        insertImage()
+
+                    }
+                    else if (pinkText == `Bpawn` && aup == 100) {
+
+                        document.getElementById(`b${a}`).innerText = 'Bqueen'
+                        document.getElementById(pinkId).innerText = ''
+                        coloring()
+                        insertImage()
+
+                    }
                     coloring()
                     insertImage()
                     let beat = new Audio('bonk_7zPAD7C.mp3');
@@ -185,9 +199,6 @@ function insertImage() {
                         if (aup == 200 && document.getElementById(`b${a + 200}`).innerText.length == 0) {
                             document.getElementById(`b${a + 200}`).style.backgroundColor = 'green'
                         }
-                        if (aup == 200 && (document.getElementById(`b${a + 200 + 1}`).innerText == `Bpawn` || document.getElementById(`b${a + 200 -1}`).innerText ==`Bpawn`)){
-                           EpW = 1
-                        }
                     }
   
                     if (aup !== 200 && document.getElementById(`b${a + 100}`).innerText.length == 0) {
@@ -224,9 +235,6 @@ function insertImage() {
                         if (aup == 700 && document.getElementById(`b${a - 200}`).innerText.length == 0) {
                             document.getElementById(`b${a - 200}`).style.backgroundColor = 'green'
                         }
-                        if (aup == 700 && (document.getElementById(`b${a - 200 + 1}`).innerText == `Wpawn` || document.getElementById(`b${a - 200 -1}`)).innerText ==`Wpawn`){
-                            EpB = 1
-                         }
                     }
   
                     if (aup !== 700 && document.getElementById(`b${a - 100}`).innerText.length == 0) {
@@ -618,11 +626,18 @@ function insertImage() {
   
             pinkId = item.id
             pinkText = item.innerText
+            getId = item.id
+            arr = Array.from(getId)
+            arr.shift()
+            startSide = eval(arr.pop())
+            arr.push('0')
+            startUp = eval(arr.join(''))
+            start = startSide + startUp
+            console.log(start)
   
             document.querySelectorAll('.box').forEach(item2 => {
   
                 item2.addEventListener('click', function () {
-  
                     getId = item2.id
                     arr = Array.from(getId)
                     arr.shift()
@@ -630,9 +645,9 @@ function insertImage() {
                     arr.push('0')
                     aup = eval(arr.join(''))
                     a = aside + aup
-                    console.log(pinkText, " ", a, " ", aside, " ", aup)
+                    
   
-                    if (item2.style.backgroundColor == 'green' && item2.innerText.length == 0) {
+                    if (item2.style.backgroundColor == 'green' && item2.innerText.length == 0){
                         if (pinkText == `Wpawn` && aup == 400 && EpW == 1) {
                             document.getElementById(pinkId).innerText = ''
                             item2.innerText = pinkText
@@ -650,8 +665,8 @@ function insertImage() {
                             coloring()
                         }
   
-                        else if (pinkText == `Wpawn` && aup == 800) {
-  
+                        else if (pinkText == 'Wpawn' && aup == 800) {
+                            console.log(pinkText, " ", a, " ", aside, " ", aup)
                             document.getElementById(`b${a}`).innerText = 'Wqueen'
                             document.getElementById(pinkId).innerText = ''  
                             coloring()
