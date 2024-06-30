@@ -140,6 +140,17 @@ function insertImage() {
                     pinkText = i.innerText
   
                     document.getElementById(pinkId).innerText = ''
+                    if(EpW == 1 && item.innerText == 'temp'){
+                        EpW = 0
+                        tempId = item.id
+                        arr = Array.from(tempId)
+                        arr.shift()
+                        aside = eval(arr.pop())
+                        arr.push('0')
+                        aup = eval(arr.join(''))
+                        a = aside + aup
+                        document.getElementById(`b${a + 100}`).innerText = ''
+                    }
                     item.innerText = pinkText
                     coloring()
                     insertImage()
@@ -163,7 +174,7 @@ function insertImage() {
         arr.push('0')
         aup = eval(arr.join(''))
         a = aside + aup
-        console.log(aup, " ", aside)
+        console.log(a)
   
   
         // Function to display the available paths for all pieces
@@ -632,7 +643,8 @@ function insertImage() {
                         if (pinkText == `Wpawn` && aup == 400 && EpW == 1) {
                             document.getElementById(pinkId).innerText = ''
                             item2.innerText = pinkText
-                            insertImage()      
+                            insertImage()
+                            pinkText = 'temp'
                             document.getElementById(`b${a - 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
                             coloring()                                    
                         }
@@ -640,6 +652,7 @@ function insertImage() {
                             document.getElementById(pinkId).innerText = ''
                             item2.innerText = pinkText
                             insertImage()
+                            pinkText = 'temp'
                             document.getElementById(`b${a + 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`
                             coloring()
                         }
