@@ -775,3 +775,20 @@ function insertImage() {
     })
   })
   //Timer
+  const startMinutes = 10;
+  let time = startMinutes = 60;
+
+  const countdownEl = document.getElementById("countdown");
+
+  setInterval(unpdateCountdown, 1000)
+
+  function unpdateCountdown(){
+    const minutes = Math.floor(time / 60)
+    let seconds = minutes % 60
+
+    seconds = seconds < 10 ? '0' + seconds : seconds
+
+    countdownEl.innerHTML = `${minutes}:${seconds}`
+
+    time--
+  }
