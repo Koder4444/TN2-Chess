@@ -66,6 +66,10 @@ li {
     display: none;
 }
 
+#countdown{
+    z-index: 4;
+}
+
 .authcont {
     width: 100vw;
 }
