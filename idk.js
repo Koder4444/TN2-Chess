@@ -596,18 +596,6 @@ function insertImage() {
             dame.style.display = "block"
             dame.src = "dame.mp4"
             dame.playbackRate = 1.65
-            setTimeout(() => {dame.src = ""}, 1600)
-            // setTimeout(() => {
-            //     // console.log(`${toggle}`) 
-            //     if (tog % 2 == 0) {
-            //         alert('White Wins !!')
-            //         location.reload()
-            //     }0
-            //     else if (tog % 2 !== 0) {
-            //         alert('Black Wins !!')
-            //         location.reload()
-            //     }
-            // }, 100)
         }
   
   
