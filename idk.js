@@ -810,6 +810,8 @@ function ifWin(){
                             blackCastleChance=false
                             coloring()
                             insertImage()
+
+                            //Play meme sound
                             let beat = new Audio('bonk_7zPAD7C.mp3');
                             beat.play()
                             
@@ -825,6 +827,8 @@ function ifWin(){
                             blackCastleChance=false
                             coloring()
                             insertImage()
+
+                            //Play meme sound
                             let beat = new Audio('bonk_7zPAD7C.mp3');
                             beat.play()
   
@@ -882,6 +886,7 @@ function ifWin(){
         clearInterval(Btime)
     }
 
+    //Print time
     secondsB = secondsB < 10 ? '0' + secondsB : secondsB
     minutesB = minutesB < 10 ? '0' + minutesB : minutesB
 
@@ -905,6 +910,7 @@ function ifWin(){
         clearInterval(Wtime)
     }
 
+    //Print time
     secondsW = secondsW < 10 ? '0' + secondsW : secondsW
     minutesW = minutesW < 10 ? '0' + minutesW : minutesW
     
