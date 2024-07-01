@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -66,10 +67,6 @@ li {
     display: none;
 }
 
-#countdown{
-    z-index: 4;
-}
-
 .authcont {
     width: 100vw;
 }
@@ -99,4 +96,23 @@ li {
 }
 .EnPass{
     opacity: 0;
+}
+#countdownB{
+    color: white;
+    z-index: 7;
+    font-size: 50px;
+    background-color: grey;
+    border: solid aqua;
+    border-radius: 8px;
+    transform: translateX(244px);
+    
+}
+#countdownW{
+    color: white;
+    z-index: 7;
+    font-size: 50px;
+    background-color: grey;
+    border: solid aqua;
+    border-radius: 8px;
+    transform: translateX(244px);
 }
