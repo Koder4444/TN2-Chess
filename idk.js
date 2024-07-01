@@ -596,7 +596,7 @@ function insertImage() {
             dame.style.display = "block"
             dame.src = "dame.mp4"
             dame.playbackRate = 1.65
-            setTimeout(() => {slap.src = ""}, 1600)
+            setTimeout(() => {dame.src = ""}, 1600)
             // setTimeout(() => {
             //     // console.log(`${toggle}`) 
             //     if (tog % 2 == 0) {
