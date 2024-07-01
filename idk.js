@@ -1,3 +1,4 @@
+
 let EpW = 0
 let EpB = 0
 // Inserting the Images
@@ -776,19 +777,34 @@ function insertImage() {
   })
   //Timer
   const startMinutes = 10;
-  let time = startMinutes = 60;
+  let timeW = startMinutes * 60;
+  let timeB = startMinutes * 60
 
-  const countdownEl = document.getElementById("countdown");
+  const countdownElB = document.getElementById("countdownB");
+  const countdownElW = document.getElementById("countdownW");
 
-  setInterval(unpdateCountdown, 1000)
+  setInterval(updateCountdownB, 1000)
+  setInterval(updateCountdownW, 1000)
 
-  function unpdateCountdown(){
-    const minutes = Math.floor(time / 60)
-    let seconds = minutes % 60
+  function updateCountdownB(){
+    let minutesB = Math.floor(timeB / 60)
+    let secondsB = timeB % 60
 
-    seconds = seconds < 10 ? '0' + seconds : seconds
+    secondsB = secondsB < 10 ? '0' + secondsB : secondsB
+    minutesB = minutesB < 10 ? '0' + minutesB : minutesB
 
-    countdownEl.innerHTML = `${minutes}:${seconds}`
+    countdownElB.innerHTML = `${minutesB}:${secondsB}`
 
-    time--
+    if (tog % 2 == 0) {timeB--}
+  }
+  function updateCountdownW(){
+    let minutesW = Math.floor(timeW / 60)
+    let secondsW = timeW % 60
+
+    secondsW = secondsW < 10 ? '0' + secondsW : secondsW
+    minutesW = minutesW < 10 ? '0' + minutesW : minutesW
+    
+    countdownElW.innerHTML = `${minutesW}:${secondsW}`
+
+    if (tog % 2 !== 0) {timeW--}
   }
