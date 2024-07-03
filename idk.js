@@ -1,3 +1,4 @@
+
 let EpW = 0
 let EpB = 0
 // Inserting the Images
@@ -23,11 +24,9 @@ function insertImage() {
   insertImage()
   //En Passant
   function EnPassant(){
-    document.querySelectorAll('.box').forEach(image => {
-        image.innerHTML = `${image.innerText} <img class='EnPass' src="${image.innerText}.png" alt="">`
-        image.style.cursor = 'pointer'
-    })
+    
   }
+  
   
   //Coloring
   
@@ -123,9 +122,13 @@ function insertImage() {
         //Increase toggle var (next turn)
         if (item.style.backgroundColor == 'green' && item.innerText.length == 0) {
             tog = tog + 1
+            if (tog % 2 == 0) EpB ++
+            else EpW ++
         }
         else if (item.style.backgroundColor == 'aqua' && item.innerText.length == 0) {
             tog = tog + 1
+            if (tog % 2 == 0) EpB ++
+            else EpW ++
         }
   
         else if (item.style.backgroundColor == 'green' && item.innerText.length !== 0) {
@@ -148,11 +151,15 @@ function insertImage() {
 
                     //Delete opposite pawn if take with EnPassant
                     if(EpW == 1 && item.innerText == 'temp'){
-                        EpW = 0
                         document.getElementById(`b${a + 100}`).innerText = ''
                     }
-                    item.innerText = pinkText
 
+                    if(EpB == 1 && item.innerText == 'temp'){
+                        document.getElementById(`b${a + 100}`).innerText = ''
+                    }
+
+                    item.innerText = pinkText
+                    
                     //Promote to queen with pawn take
                     if (pinkText == 'Wpawn' && aup == 800) {
                         document.getElementById(`b${a}`).innerText = 'Wqueen'
@@ -177,6 +184,8 @@ function insertImage() {
                     let beat = new Audio('bonk_7zPAD7C.mp3');
                     beat.play()
                     tog = tog + 1
+                    if (tog % 2 == 0) EpB ++
+                    else EpW ++
                     let slap = document.getElementById("slap")
                     slap.src = "slap.mp4"
                     setTimeout(function(){slap.src = ""}, 800)
@@ -707,25 +716,52 @@ function ifWin(){
                     
                     //If that box is moveable
                     if (item2.style.backgroundColor == 'green' && item2.innerText.length == 0){
+                        //delete En Passant piece after the valid move
+                        document.querySelectorAll('.box').forEach(image => {
+                            if(image.innerText == `temp` && EpW !== 1){
+                                image.innerText = ``
+                            } 
+                            else if(image.innerText == `temp` && EpB !== 1){
+                                image.innerText = ``
+                            } 
+                        })
 
                         //Creat En passant element(W)
-                        if (pinkText == `Wpawn` && aup == 400 && EpW == 1) {
-                            document.getElementById(pinkId).innerText = ''
-                            item2.innerText = pinkText
-                            insertImage()
-                            pinkText = `temp`
-                            document.getElementById(`b${a - 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
-                            coloring()                                    
+                        if (pinkText == `Wpawn` && aup == 400 ) {
+                            if(document.getElementById(`b${a + 1}`).innerText == `Bpawn` || document.getElementById(`b${a - 1}`).innerText == `Bpawn`){
+                                document.getElementById(pinkId).innerText = ''
+                                item2.innerText = pinkText
+                                insertImage()
+                                pinkText = `temp`
+                                document.getElementById(`b${a - 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
+                                coloring()
+                                EpW = 1 
+                            }
+                            else {
+                                document.getElementById(pinkId).innerText = ''
+                                item2.innerText = pinkText
+                                coloring()
+                                insertImage()
+                            }                                
                         }
 
                         //Creat En passant element(B)
-                        else if (pinkText == `Bpawn` && aup == 500 && EpB == 1) {
-                            document.getElementById(pinkId).innerText = ''
-                            item2.innerText = pinkText
-                            insertImage()
-                            pinkText = 'temp'
-                            document.getElementById(`b${a + 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`
-                            coloring()
+                        else if (pinkText == `Bpawn` && aup == 500 ) {
+                            if(document.getElementById(`b${a + 1}`).innerText == `Wpawn` || document.getElementById(`b${a - 1}`).innerText == `Wpawn`){
+                                document.getElementById(pinkId).innerText = ''
+                                item2.innerText = pinkText
+                                insertImage()
+                                pinkText = `temp`
+                                document.getElementById(`b${a + 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
+                                coloring()
+                                EpW = 1 
+                            }
+                            else {
+                                document.getElementById(pinkId).innerText = ''
+                                item2.innerText = pinkText
+                                coloring()
+                                insertImage()
+                            }
                         }
                         
                         //Promote Wpawn to queen
