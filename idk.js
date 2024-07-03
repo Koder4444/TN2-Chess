@@ -1,6 +1,5 @@
-
-let EpW = 0
-let EpB = 0
+let EpW = 2
+let EpB = 2
 // Inserting the Images
 function insertImage() {
 
@@ -116,7 +115,7 @@ function insertImage() {
   
   
     item.addEventListener('click', function () {
-  
+        console.log(EpW)
         // To delete the opposite element
   
         //Increase toggle var (next turn)
@@ -130,7 +129,6 @@ function insertImage() {
             if (tog % 2 == 0) EpB ++
             else EpW ++
         }
-  
         else if (item.style.backgroundColor == 'green' && item.innerText.length !== 0) {
   
             document.querySelectorAll('.box').forEach(i => {
@@ -155,7 +153,7 @@ function insertImage() {
                     }
 
                     if(EpB == 1 && item.innerText == 'temp'){
-                        document.getElementById(`b${a + 100}`).innerText = ''
+                        document.getElementById(`b${a - 100}`).innerText = ''
                     }
 
                     item.innerText = pinkText
@@ -728,7 +726,17 @@ function ifWin(){
 
                         //Creat En passant element(W)
                         if (pinkText == `Wpawn` && aup == 400 ) {
-                            if(document.getElementById(`b${a + 1}`).innerText == `Bpawn` || document.getElementById(`b${a - 1}`).innerText == `Bpawn`){
+                            if(aside > 1){
+                                if(document.getElementById(`b${a - 1}`).innerText == `Bpawn`){
+                                    EpW = 1
+                                }
+                            }
+                            else if(aside < 8){
+                                if(document.getElementById(`b${a + 1}`).innerText == `Bpawn`){
+                                    EpW = 1
+                                }
+                            }
+                            if(EpW == 1){
                                 document.getElementById(pinkId).innerText = ''
                                 item2.innerText = pinkText
                                 insertImage()
@@ -747,14 +755,24 @@ function ifWin(){
 
                         //Creat En passant element(B)
                         else if (pinkText == `Bpawn` && aup == 500 ) {
-                            if(document.getElementById(`b${a + 1}`).innerText == `Wpawn` || document.getElementById(`b${a - 1}`).innerText == `Wpawn`){
+                            if(aside > 1){
+                                if(document.getElementById(`b${a - 1}`).innerText == `Wpawn`){
+                                    EpB = 1
+                                }
+                            }
+                            else if(aside < 8){
+                                if(document.getElementById(`b${a + 1}`).innerText == `Wpawn`){
+                                    EpB = 1
+                                }
+                            }
+                            if(EpB == 1){
                                 document.getElementById(pinkId).innerText = ''
                                 item2.innerText = pinkText
                                 insertImage()
                                 pinkText = `temp`
                                 document.getElementById(`b${a + 100}`).innerHTML = `${pinkText} <img class='EnPass' src="${pinkText}.png" alt="">`          
                                 coloring()
-                                EpW = 1 
+                                EpB = 1
                             }
                             else {
                                 document.getElementById(pinkId).innerText = ''
