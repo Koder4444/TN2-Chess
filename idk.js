@@ -21,11 +21,6 @@ function insertImage() {
     })
   }
   insertImage()
-  //En Passant
-  function EnPassant(){
-    
-  }
-  
   
   //Coloring
   
@@ -104,21 +99,232 @@ function insertImage() {
     })
   }
   
-  
+  //func to check checked
+  function ifCheck(){
+    document.querySelectorAll('.box').forEach(king => {
+        kingText = king.innerText
+
+        //If check
+        if(kingText == 'Wking' || kingText == 'Bking'){
+
+            //Get king positon as int
+            getId = king.id
+            arr = Array.from(getId)
+            arr.shift()
+            kside = eval(arr.pop())
+            arr.push('0')
+            kup = eval(arr.join(''))
+            k = kside + kup
+
+            //If king can be checked vertically up
+            for (let i = 1; i < 9; i++) {
+                if ((k + i * 100) < 900 && document.getElementById(`b${k + i * 100}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k + i * 100}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+    
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+                        
+                        if(tempText == 'queen' || tempText == 'rook' || (tempText == 'king' && i == 1)){
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked vertically down
+            for (let i = 1; i < 9; i++) {
+    
+                if ((k - i * 100) > 100 && document.getElementById(`b${k - i * 100}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k - i * 100}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+    
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'rook' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked horizontally right
+            for (let i = 1; i < 9; i++) {
+    
+                if ((k + i) < (kup + 9) && document.getElementById(`b${k + i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k + i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'rook' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked horizontally left
+            for (let i = 1; i < 9; i++) {
+    
+                if ((k - i) > (kup) && document.getElementById(`b${k - i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k - i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'rook' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked up right
+            for (let i = 1; i < 9; i++) {
+                
+                if (i < (900 - kup) / 100 && i < 9 - kside && document.getElementById(`b${k + i * 100 + i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k + i * 100 + i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'bishop' || tempText == 'pawn' || tempText == 'queen' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked down right
+            for (let i = 1; i < 9; i++) {
+
+                if (i < kup / 100 && i < 9 - kside && document.getElementById(`b${k - i * 100 + i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k - i * 100 + i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'bishop' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+    
+            //If king can be checked up left
+            for (let i = 1; i < 9; i++) {
+
+                if (i < (900 - kup) / 100 && i < kside && document.getElementById(`b${k + i * 100 - i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k + i * 100 - i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        console.log(tempText)
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'bishop' || tempText == 'pawn' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+    
+            }
+    
+            //If king can be checked down left
+            for (let i = 1; i < 9; i++) {
+
+                if (i < kup / 100 && i < kside && document.getElementById(`b${k - i * 100 - i}`).innerText.length !== 0) {
+
+                    tempText = document.getElementById(`b${k - i * 100 - i}`).innerText
+                    tempColor =((Array.from(tempText)).shift()).toString()
+                    kingColor = ((Array.from(kingText)).shift()).toString()
+
+                    if(tempColor == kingColor) break
+                    else{
+                        
+                        
+                        tempText = Array.from(tempText)
+                        tempText.shift()
+                        tempText = tempText.join('')
+
+                        if(tempText == 'queen' || tempText == 'bishop' || (tempText == 'king' && i == 1)){    
+                            king.style.backgroundColor = 'red'
+                            break
+                        }
+                    }
+                }
+            }
+
+            
+        }
+    })
+    
+}
   
   tog = 1
   whiteCastleChance=true
   blackCastleChance=true
-  
+  // To delete the opposite element(and show available path for peices)
   document.querySelectorAll('.box').forEach(item => {
-  
-  
-  
     item.addEventListener('click', function () {
-        console.log(EpW)
-        // To delete the opposite element
   
         //Increase toggle var (next turn)
+        //Check if En Passant can be done
         if (item.style.backgroundColor == 'green' && item.innerText.length == 0) {
             tog = tog + 1
             if (tog % 2 == 0) EpB ++
@@ -129,14 +335,13 @@ function insertImage() {
             if (tog % 2 == 0) EpB ++
             else EpW ++
         }
-        else if (item.style.backgroundColor == 'green' && item.innerText.length !== 0) {
-  
+        else if (((item.style.backgroundColor == 'green') && item.innerText.length !== 0) || item.style.backgroundColor == 'red') {
             document.querySelectorAll('.box').forEach(i => {
-                if (i.style.backgroundColor == 'pink') {
+                if (i.style.backgroundColor == 'pink' || (i.style.backgroundColor == 'red' && (item.innerText !== 'Wking' && item.innerText !== 'Bking'))) {
 
                     //Get box's ID as a int
-                    tempId = item.id
-                    arr = Array.from(tempId)
+                    getId = item.id
+                    arr = Array.from(getId)
                     arr.shift()
                     aside = eval(arr.pop())
                     arr.push('0')
@@ -178,12 +383,13 @@ function insertImage() {
                     coloring()
                     insertImage()
 
-                    //Play meme sound
-                    let beat = new Audio('bonk_7zPAD7C.mp3');
-                    beat.play()
                     tog = tog + 1
                     if (tog % 2 == 0) EpB ++
                     else EpW ++
+
+                    //Play meme sound
+                    let beat = new Audio('bonk_7zPAD7C.mp3');
+                    beat.play()
                     let slap = document.getElementById("slap")
                     slap.src = "slap.mp4"
                     setTimeout(function(){slap.src = ""}, 800)
@@ -232,7 +438,6 @@ function insertImage() {
                     if (aside < 8 && document.getElementById(`b${a + 100 + 1}`).innerText.length !== 0) {
                         document.getElementById(`b${a + 100 + 1}`).style.backgroundColor = 'green'
                     }
-  
                     if (aside > 1 && document.getElementById(`b${a + 100 - 1}`).innerText.length !== 0) {
                         document.getElementById(`b${a + 100 - 1}`).style.backgroundColor = 'green'
   
@@ -631,7 +836,6 @@ function insertImage() {
             }
         }
   
-  
         // Toggling the turn
   
         if (tog % 2 !== 0) {
@@ -647,7 +851,6 @@ function insertImage() {
   
   })
   
-
 // winning
 //Run the winning func
 const won = setInterval(ifWin, 1)
@@ -726,17 +929,7 @@ function ifWin(){
 
                         //Creat En passant element(W)
                         if (pinkText == `Wpawn` && aup == 400 ) {
-                            if(aside > 1){
-                                if(document.getElementById(`b${a - 1}`).innerText == `Bpawn`){
-                                    EpW = 1
-                                }
-                            }
-                            else if(aside < 8){
-                                if(document.getElementById(`b${a + 1}`).innerText == `Bpawn`){
-                                    EpW = 1
-                                }
-                            }
-                            if(EpW == 1){
+                            if((aside > 1 && document.getElementById(`b${a - 1}`).innerText == `Bpawn`) || (aside < 8 && document.getElementById(`b${a + 1}`).innerText == `Bpawn`)){
                                 document.getElementById(pinkId).innerText = ''
                                 item2.innerText = pinkText
                                 insertImage()
@@ -755,17 +948,7 @@ function ifWin(){
 
                         //Creat En passant element(B)
                         else if (pinkText == `Bpawn` && aup == 500 ) {
-                            if(aside > 1){
-                                if(document.getElementById(`b${a - 1}`).innerText == `Wpawn`){
-                                    EpB = 1
-                                }
-                            }
-                            else if(aside < 8){
-                                if(document.getElementById(`b${a + 1}`).innerText == `Wpawn`){
-                                    EpB = 1
-                                }
-                            }
-                            if(EpB == 1){
+                            if((aside > 1 && document.getElementById(`b${a - 1}`).innerText == `Wpawn`) || (aside < 8 && document.getElementById(`b${a + 1}`).innerText == `Wpawn`)){
                                 document.getElementById(pinkId).innerText = ''
                                 item2.innerText = pinkText
                                 insertImage()
@@ -888,7 +1071,7 @@ function ifWin(){
   
                         }
                     }
-  
+                    ifCheck()
                 })
             })
   
@@ -913,6 +1096,8 @@ function ifWin(){
         }
     })
   })
+
+
   //Timer
   const startMinutes = 10;
   let timeW = startMinutes * 60
